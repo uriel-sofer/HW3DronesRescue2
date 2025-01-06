@@ -72,12 +72,7 @@ DirectionalVector Drone::getPB() const
 
 bool Drone::isOnTarget(const DirectionalVector& target) const
 {
-    return floorLocation() == target;
-}
-
-DirectionalVector Drone::floorLocation() const
-{
-    return DirectionalVector(std::floor(this->location.getX()), std::floor(this->location.getY()));
+    return location.floorVector() == target.floorVector();
 }
 
 void Drone::setPB(const DirectionalVector& directional_vector)
@@ -100,8 +95,11 @@ void Drone::updateVelocity(const Drone& currentGB)
 
 void Drone::move(const Drone& currentGB)
 {
-    this->updateVelocity(currentGB);
+    /*
+     * Not sure what is the correct order of these lines, but it doesn't seem to matter
+     */
     location = location + velocity;
+    this->updateVelocity(currentGB);
 }
 
 void Drone::updatePB(const DirectionalVector& target)

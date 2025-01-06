@@ -7,11 +7,12 @@ class Drone {
 private:
     static DirectionalVector TARGET;
 
-    unsigned int instanceID;
+    unsigned int instanceID; // Unique ID
     DirectionalVector location;
     DirectionalVector velocity;
-    DirectionalVector PB;
-    static unsigned int counter;
+    DirectionalVector PB; // Personal Best
+    static unsigned int counter; // Counts instances for ID-ing
+
 public:
     Drone();
     Drone(DirectionalVector loc, DirectionalVector vel, const DirectionalVector& target);
@@ -28,12 +29,6 @@ public:
     DirectionalVector getPB() const;
 
     bool isOnTarget(const DirectionalVector& target) const;
-
-    /**
-     * Floors the Drone's location to get a nice index
-     * @return DirectionalVector matching the drones location, rounded down (floored)
-     */
-    DirectionalVector floorLocation() const;
 
     void updateVelocity(const Drone& currentGB);
     void updatePB(const DirectionalVector& target);

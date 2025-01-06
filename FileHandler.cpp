@@ -14,11 +14,12 @@ Config ConfigParser(const std::string& filePath)
     double x, y;
     unsigned int iterations;
 
+    // Wrong file format will trigger an error here
     if (!(file >> x >> y >> iterations))
     {
         //std::cerr << "Error: Invalid format in config file" << std::endl;
         std::cerr << "Error; invalid input" << std::endl;
-        return Config();
+        return Config(); // "default" object is treated as an error in the main
     }
 
     return Config(Point(x, y), iterations);
@@ -45,13 +46,16 @@ Init InitParser(const std::string& filePath)
         std::cerr << "Error; invalid input" << std::endl;
         return Init();
     }
+
     init.dronesAmount = drones_amount;
+
     for (int i = 0; i < drones_amount; ++i)
     {
+        // Wrong file format will trigger an error here
         if (not (file >> x >> y >> speed_x >> speed_y))
         {
             //std::cerr << "Error: Invalid format on line " << i + 2 << " in init file" << std::endl;
-            return Init();
+            return Init(); // "default" object is treated as an error in the main
         }
 
         init.initialLocations.push_back(DirectionalVector(x, y));

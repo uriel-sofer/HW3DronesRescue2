@@ -79,7 +79,12 @@ std::ostream& operator<<(std::ostream& os, const DirectionalVector& vec)
     return os;
 }
 
-DirectionalVector operator*(double scalar, const DirectionalVector& vector)
+DirectionalVector operator*(const double scalar, const DirectionalVector& vector)
 {
     return DirectionalVector(scalar * vector.getX(), scalar * vector.getY());
+}
+
+DirectionalVector DirectionalVector::floorVector() const
+{
+    return DirectionalVector(std::floor(this->getX()), std::floor(this->getY()));
 }

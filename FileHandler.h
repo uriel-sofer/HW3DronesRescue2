@@ -6,16 +6,23 @@
 #include "Vector.h"
 #include "DirectionalVector.h"
 
+/**
+ * Struct to hold the data for the configuration file.
+ * Holds the target and iterations
+ */
 struct Config {
     DirectionalVector target;
     unsigned int iterations;
 
-    Config(Point  target, const unsigned int iterations)
-        : target(std::move(target)), iterations(iterations) {}
+    Config(const Point& target, const unsigned int iterations)
+        : target(target), iterations(iterations) {}
 
     Config() : target(Point()), iterations(0) {}
 };
 
+/**
+ * Struct to hold the data for the initialization file
+ */
 struct Init {
     Vector<DirectionalVector> initialLocations;
     Vector<DirectionalVector> speeds;

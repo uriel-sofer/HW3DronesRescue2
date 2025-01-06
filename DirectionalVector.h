@@ -24,6 +24,11 @@ public:
 
     double euclideanDistance(const Point& point) const;
     double euclideanDistance(const DirectionalVector& direction) const;
+    /**
+     * Floors the vector's coordinates, to know if we are on target
+     * @return DirectionalVector with only the whole parts of x and y
+     */
+    DirectionalVector floorVector() const;
 
     friend std::ostream& operator<<(std::ostream& os, const DirectionalVector& vec);
     friend DirectionalVector operator*(double scalar, const DirectionalVector& vector);
