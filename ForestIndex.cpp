@@ -24,7 +24,8 @@ ForestIndex::ForestIndex(ForestIndex&& other) noexcept : index(other.index), dro
 // Copy Assignment
 ForestIndex& ForestIndex::operator=(const ForestIndex& other)
 {
-    if (this != &other) {
+    if (this != &other)
+    {
         index = other.index;
         dronesCount = other.dronesCount;
     }
@@ -34,7 +35,8 @@ ForestIndex& ForestIndex::operator=(const ForestIndex& other)
 // Move Assignment
 ForestIndex& ForestIndex::operator=(ForestIndex&& other) noexcept
 {
-    if (this != &other) {
+    if (this != &other)
+    {
         index = other.index;
         dronesCount = other.dronesCount;
         other.dronesCount = 0;
@@ -55,16 +57,16 @@ bool ForestIndex::operator!=(const ForestIndex& other) const
 
 // Getters and Setters
 GridIndex ForestIndex::get_index() const { return index; }
-void ForestIndex::set_index(GridIndex index) { this->index = index; }
+void ForestIndex::set_index(const GridIndex index) { this->index = index; }
 
 int ForestIndex::get_x() const { return index.x; }
-void ForestIndex::set_x(int x) { index.x = x; }
+void ForestIndex::set_x(const int x) { index.x = x; }
 
 int ForestIndex::get_y() const { return index.y; }
-void ForestIndex::set_y(int y) { index.y = y; }
+void ForestIndex::set_y(const int y) { index.y = y; }
 
 unsigned int ForestIndex::get_dronesCount() const { return dronesCount; }
-void ForestIndex::set_dronesCount(unsigned int dronesCount) { this->dronesCount = dronesCount; }
+void ForestIndex::set_dronesCount(const unsigned int dronesCount) { this->dronesCount = dronesCount; }
 
 // Increment and Decrement Operators
 void ForestIndex::operator++() { ++dronesCount; }    // Prefix increment

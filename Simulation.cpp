@@ -3,7 +3,7 @@
 #include <fstream>
 
 Simulation::Simulation(const Config& config, const Init& init) :
-DroneCounter(0) ,target(config.target), AMOUNT(init.dronesAmount), iterations(config.iterations),globalBestIndex(0), forest()
+target(config.target), AMOUNT(init.dronesAmount), iterations(config.iterations),globalBestIndex(0), forest()
 {
     drones = new Drone[AMOUNT];
     for (size_t i = 0; i < AMOUNT; i++)
@@ -114,7 +114,7 @@ void Simulation::printState() const
     std::cout << "Global best: " << drones[globalBestIndex] << std::endl;
 }
 
-// // Save the state to a file
+// // Save the state to a file, commented because I think mine's better
 // void Simulation::saveState(const std::string& outputFile) const
 // {
 //     std::ofstream file(outputFile);

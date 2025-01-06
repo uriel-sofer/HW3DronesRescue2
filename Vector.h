@@ -1,6 +1,11 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+/**
+ * I wanted a dynamic array, and wanted to use templates, so i went ahead and implemented this class
+ * Not strictly necessary but fun
+ * @tparam T printable object
+ */
 template <typename T>
 class Vector {
 private:
@@ -20,15 +25,17 @@ public:
 
     void push_back(const T& value);
     void pop_back();
-    // Both assume correct input
-    T& operator[](size_t index);
-    const T& operator[](size_t index) const;
+
+    T& operator[](size_t index); // Assumes correct input, due to inability to handle wrong input (yet)
+    const T& operator[](size_t index) const; // Assumes correct input, due to inability to handle wrong input (yet)
     size_t getSize() const;
     size_t getCapacity() const;
-    void clear();
 
-    void print() const;
+    void clear(); // Clears the vector
+
+    void print() const; // Prints all items in the vector (assumes printable)
 };
+// Implementations below
 
 template <typename T>
 Vector<T>::Vector() : data(nullptr), capacity(0), size(0)
@@ -168,6 +175,8 @@ template <typename T>
 void Vector<T>::clear()
 {
     size = 0;
+    capacity = 0;
+    resize();
 }
 
 

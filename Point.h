@@ -3,10 +3,13 @@
 
 #include <iostream>
 
+/**
+ * Represents a point, used with DirectionalVector
+ */
 class Point {
 protected:
      double x, y;
-     virtual void limitPoint();
+     virtual void limitPoint(); // Limits the points to given bounds (below)
 
 public:
      static constexpr int MAX_WIDTH_X = 72;

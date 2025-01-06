@@ -6,7 +6,7 @@ Point::Point() : x(0), y(0) {}
 
 Point::Point(const double x, const double y) : x(x), y(y)
 {
-    limitPoint();
+    Point::limitPoint();
 }
 
 Point::Point(const Point& other) : x(other.x), y(other.y) {}
@@ -50,7 +50,6 @@ void Point::setX(const double x)
 {
     this->x = x;
     limitPoint();
-
 }
 
 double Point::getY() const

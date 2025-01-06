@@ -4,6 +4,7 @@
 
 int main(int argc, char* argv[])
 {
+    // Handle wrong arguments
     if (argc != 4)
     {
         //std::cerr << "Usage: " << argv[0] << " <config_file> <init_file> <output_file>" << std::endl;
@@ -11,6 +12,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
+    // Parse through the files
     const Config config = ConfigParser(argv[1]);
     const Init init = InitParser(argv[2]);
 
@@ -23,7 +25,7 @@ int main(int argc, char* argv[])
 
     Simulation simulation(config, init);
     simulation.run();
-    simulation.saveState(argv[3]);
+    simulation.saveState(argv[3]); // Output file
 
     return 0;
 }
