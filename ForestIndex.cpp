@@ -1,122 +1,73 @@
 #include "ForestIndex.h"
 
+// Default Constructor
+ForestIndex::ForestIndex() : index(GridIndex()), dronesCount(0) {}
 
-ForestIndex::ForestIndex() : x(0), y(0), dronesCount(0)
-{}
+// Parameterized Constructor with coordinates
+ForestIndex::ForestIndex(int x, int y) : index(GridIndex(x, y)), dronesCount(0) {}
 
-ForestIndex::ForestIndex(const int x, const int y)
+// Parameterized Constructor with GridIndex
+ForestIndex::ForestIndex(GridIndex index) : index(index), dronesCount(0) {}
+
+// Destructor
+ForestIndex::~ForestIndex() = default;
+
+// Copy Constructor
+ForestIndex::ForestIndex(const ForestIndex& other) : index(other.index), dronesCount(other.dronesCount) {}
+
+// Move Constructor
+ForestIndex::ForestIndex(ForestIndex&& other) noexcept : index(other.index), dronesCount(other.dronesCount)
 {
-    this->x = x;
-    this->y = y;
-    dronesCount = 0;
+    other.dronesCount = 0;
 }
 
-ForestIndex::~ForestIndex()
-{}
-
-ForestIndex::ForestIndex(const ForestIndex& other)
-{
-    if (this != &other)
-    {
-        this->x = other.x;
-        this->y = other.y;
-        dronesCount = other.dronesCount;
-    }
-}
-
-ForestIndex::ForestIndex(ForestIndex&& other)
-{
-    if (this != &other)
-    {
-        this->x = other.x;
-        this->y = other.y;
-        this->dronesCount = other.dronesCount;
-    }
-}
-
+// Copy Assignment
 ForestIndex& ForestIndex::operator=(const ForestIndex& other)
 {
-    if (this != &other)
-    {
-        this->x = other.x;
-        this->y = other.y;
-        this->dronesCount = other.dronesCount;
+    if (this != &other) {
+        index = other.index;
+        dronesCount = other.dronesCount;
     }
     return *this;
 }
 
-ForestIndex& ForestIndex::operator=(ForestIndex&& other)
+// Move Assignment
+ForestIndex& ForestIndex::operator=(ForestIndex&& other) noexcept
 {
-    if (this != &other)
-    {
-        operator=(other);
+    if (this != &other) {
+        index = other.index;
+        dronesCount = other.dronesCount;
+        other.dronesCount = 0;
     }
     return *this;
 }
 
-// Don't care about drones counter
+// Comparison Operators
 bool ForestIndex::operator==(const ForestIndex& other) const
 {
-    return this->x == other.x and this->y == other.y;
+    return index == other.index && dronesCount == other.dronesCount;
 }
 
-// Don't care about drones counter
 bool ForestIndex::operator!=(const ForestIndex& other) const
 {
     return !(*this == other);
 }
 
-int ForestIndex::get_x() const
-{
-    return x;
-}
+// Getters and Setters
+GridIndex ForestIndex::get_index() const { return index; }
+void ForestIndex::set_index(GridIndex index) { this->index = index; }
 
-void ForestIndex::set_x(const int x)
-{
-    this->x = x;
-}
+int ForestIndex::get_x() const { return index.x; }
+void ForestIndex::set_x(int x) { index.x = x; }
 
-int ForestIndex::get_y() const
-{
-    return y;
-}
+int ForestIndex::get_y() const { return index.y; }
+void ForestIndex::set_y(int y) { index.y = y; }
 
-void ForestIndex::set_y(const int y)
-{
-    this->y = y;
-}
+unsigned int ForestIndex::get_dronesCount() const { return dronesCount; }
+void ForestIndex::set_dronesCount(unsigned int dronesCount) { this->dronesCount = dronesCount; }
 
-unsigned int ForestIndex::get_dronesCount() const
-{
-    return dronesCount;
-}
-
-void ForestIndex::set_dronesCount(const unsigned int dronesCount)
-{
-    this->dronesCount = dronesCount;
-}
-
-void ForestIndex::operator++()
-{
-    dronesCount++;
-}
-
-void ForestIndex::operator++(int)
-{
-    ++dronesCount;
-}
-
-void ForestIndex::operator--()
-{
-    if (dronesCount > 0)
-        dronesCount--;
-}
-
-void ForestIndex::operator--(int)
-{
-    if (dronesCount > 0)
-        --dronesCount;
-}
-
-
-
+// Increment and Decrement Operators
+void ForestIndex::operator++() { ++dronesCount; }    // Prefix increment
+void ForestIndex::operator++(int) { dronesCount++; } // Postfix increment
+void ForestIndex::operator--() { if (dronesCount > 0) --dronesCount; }    // Prefix decrement
+void ForestIndex::operator--(int) { if (dronesCount > 0) dronesCount--; } // Postfix decrement

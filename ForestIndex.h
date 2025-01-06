@@ -2,7 +2,7 @@
 #define FORESTINDEX_H
 
 /**
- * Kind of a tuple for a coordinate
+ * Represents a coordinate tuple.
  */
 struct GridIndex
 {
@@ -18,30 +18,35 @@ struct GridIndex
 
     bool operator!=(const GridIndex& grid_index) const
     {
-        return !this->operator==(grid_index);
+        return !(*this == grid_index);
     }
 };
 
 /**
- * Used to counts drones in each coordinate in the forest
+ * Used to count drones in each coordinate in the forest.
  */
 class ForestIndex {
-    int x;
-    int y;
-    unsigned int dronesCount;
+    GridIndex index;           // Grid coordinate
+    unsigned int dronesCount;  // Count of drones in this grid cell
 
 public:
+    // Constructors and Destructor
     ForestIndex();
     ForestIndex(int x, int y);
+    ForestIndex(GridIndex index);
     ~ForestIndex();
     ForestIndex(const ForestIndex& other);
-    ForestIndex(ForestIndex&& other);
+    ForestIndex(ForestIndex&& other) noexcept;
     ForestIndex& operator=(const ForestIndex& other);
-    ForestIndex& operator=(ForestIndex&& other);
+    ForestIndex& operator=(ForestIndex&& other) noexcept;
 
+    // Comparison Operators
     bool operator==(const ForestIndex& other) const;
     bool operator!=(const ForestIndex& other) const;
 
+    // Getters and Setters
+    GridIndex get_index() const;
+    void set_index(GridIndex index);
     int get_x() const;
     void set_x(int x);
     int get_y() const;
@@ -49,11 +54,11 @@ public:
     unsigned int get_dronesCount() const;
     void set_dronesCount(unsigned int dronesCount);
 
-    void operator++();
-    void operator++(int);
-    void operator--(int);
-    void operator--();
-
+    // Increment and Decrement Operators
+    void operator++();    // Prefix increment
+    void operator++(int); // Postfix increment
+    void operator--();    // Prefix decrement
+    void operator--(int); // Postfix decrement
 };
 
-#endif //FORESTINDEX_H
+#endif // FORESTINDEX_H
