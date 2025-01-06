@@ -10,8 +10,8 @@ DroneCounter(0) ,target(config.target), AMOUNT(init.dronesAmount), iterations(co
     {
         new (&drones[i]) Drone(init.initialLocations[i], init.speeds[i], target);
         updatePersonalBest(i);
-        updateGlobalBest(i);
     }
+    updateGlobalBest();
 }
 
 Simulation::~Simulation()
@@ -19,7 +19,7 @@ Simulation::~Simulation()
     delete[] drones;
 }
 
-void Simulation::updateGlobalBest(const size_t currentIndex)
+void Simulation::updateGlobalBest()
 {
     /* So there can be cases where a drone is on the target, but he isn't the "closest" to the target, such as:
     *Target: (7.00, 7.00)
@@ -35,16 +35,19 @@ void Simulation::updateGlobalBest(const size_t currentIndex)
     Now, it doesn't really matter because the simulation is ending, but I think that while factually another drone is close,
     the drone that is literally on the target should be considered the GB, as he is the "winner".
     */
-    if (drones[currentIndex].isOnTarget(target))
+    for (size_t currentIndex = 0; currentIndex < AMOUNT; currentIndex++)
     {
-        globalBestIndex = currentIndex;
-        return;
-    }
+        if (drones[currentIndex].isOnTarget(target))
+        {
+            globalBestIndex = currentIndex;
+            return;
+        }
 
-    if (drones[currentIndex].getLocation().euclideanDistance(target) <
-        drones[globalBestIndex].getLocation().euclideanDistance(target))
-    {
-        globalBestIndex = currentIndex; // Update the global best index
+        if (drones[currentIndex].getLocation().euclideanDistance(target) <
+            drones[globalBestIndex].getLocation().euclideanDistance(target))
+        {
+            globalBestIndex = currentIndex; // Update the global best index
+        }
     }
 }
 
@@ -83,7 +86,7 @@ void Simulation::run()
             }
 
             updatePersonalBest(i); // Update personal best
-            updateGlobalBest(i);  // Update global best for each drone
+            updateGlobalBest();  // Update global best for each drone
 
             if (drones[i].isOnTarget(target))
             {

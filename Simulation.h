@@ -20,7 +20,7 @@ public:
     Simulation(const Config& config, const Init& init);
     ~Simulation();
     void run();
-    void updateGlobalBest(size_t currentIndex);
+    void updateGlobalBest();
     void updatePersonalBest(size_t currentIndex) const;
     void printState() const;
     void saveState(const std::string& outputFile) const;

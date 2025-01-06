@@ -7,3 +7,6 @@
 14	358	7578924129375854	CMakeFiles/HW3DronesRescue.dir/Point.cpp.obj	6aa0e84b43c755c7
 6	463	7578924129290659	CMakeFiles/HW3DronesRescue.dir/Drone.cpp.obj	409283da40fda7b3
 463	630	7578924133866757	HW3DronesRescue.exe	eb60511c1d08258c
+4	397	7578935618749945	CMakeFiles/HW3DronesRescue.dir/main.cpp.obj	dfd0162a412e0b34
+7	409	7578935618779941	CMakeFiles/HW3DronesRescue.dir/Simulation.cpp.obj	854da719204116f3
+409	486	7578935622810373	HW3DronesRescue.exe	eb60511c1d08258c
