@@ -1,0 +1,9 @@
+# ninja log v6
+11	76	7578924129345730	CMakeFiles/HW3DronesRescue.dir/ForestIndex.cpp.obj	920b7fc0973b8cc9
+1	319	7578924129240619	CMakeFiles/HW3DronesRescue.dir/main.cpp.obj	dfd0162a412e0b34
+8	356	7578924129320675	CMakeFiles/HW3DronesRescue.dir/FileHandler.cpp.obj	d5a35a67fe5b11a8
+16	356	7578924129395878	CMakeFiles/HW3DronesRescue.dir/Simulation.cpp.obj	854da719204116f3
+4	357	7578924129270658	CMakeFiles/HW3DronesRescue.dir/DirectionalVector.cpp.obj	a25c808dbf31e9e1
+14	358	7578924129375854	CMakeFiles/HW3DronesRescue.dir/Point.cpp.obj	6aa0e84b43c755c7
+6	463	7578924129290659	CMakeFiles/HW3DronesRescue.dir/Drone.cpp.obj	409283da40fda7b3
+463	630	7578924133866757	HW3DronesRescue.exe	eb60511c1d08258c
