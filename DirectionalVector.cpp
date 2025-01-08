@@ -1,8 +1,7 @@
 #include <cmath>
-#include <utility>
+#include <iomanip>
 #include "DirectionalVector.h"
 
-#include <bits/ranges_algobase.h>
 
 DirectionalVector::DirectionalVector() : Point()
 {}
@@ -71,7 +70,6 @@ double DirectionalVector::euclideanDistance(const DirectionalVector& direction) 
 {
     return Point::distance(direction);
 }
-
 
 std::ostream& operator<<(std::ostream& os, const DirectionalVector& vec)
 {

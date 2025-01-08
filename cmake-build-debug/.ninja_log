@@ -17,3 +17,13 @@
 333	409	7580425612695539	HW3DronesRescue.exe	eb60511c1d08258c
 5	317	7580426261922088	CMakeFiles/HW3DronesRescue.dir/Simulation.cpp.obj	e71763ded1211e83
 317	381	7580426265050335	HW3DronesRescue.exe	eb60511c1d08258c
+12	535	7580487724663000	CMakeFiles/HW3DronesRescue.dir/Simulation.cpp.obj	e71763ded1211e83
+10	564	7580487724643001	CMakeFiles/HW3DronesRescue.dir/Drone.cpp.obj	113035fe68556998
+7	567	7580487724612998	CMakeFiles/HW3DronesRescue.dir/DirectionalVector.cpp.obj	95b2d42bee2af6f
+567	639	7580487730214208	HW3DronesRescue.exe	eb60511c1d08258c
+5	343	7580488250819294	CMakeFiles/HW3DronesRescue.dir/DirectionalVector.cpp.obj	95b2d42bee2af6f
+343	407	7580488254201490	HW3DronesRescue.exe	eb60511c1d08258c
+5	384	7580490141375780	CMakeFiles/HW3DronesRescue.dir/DirectionalVector.cpp.obj	95b2d42bee2af6f
+384	452	7580490145165219	HW3DronesRescue.exe	eb60511c1d08258c
+5	506	7580490891666471	CMakeFiles/HW3DronesRescue.dir/DirectionalVector.cpp.obj	95b2d42bee2af6f
+506	576	7580490896674926	HW3DronesRescue.exe	eb60511c1d08258c

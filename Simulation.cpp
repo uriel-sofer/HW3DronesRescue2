@@ -156,7 +156,7 @@ void Simulation::saveState(const std::string& outputFile) const
 
     file << iterations << std::endl;
 
-    file << std::defaultfloat << std::setprecision(3);
+    // file << std::defaultfloat << std::setprecision(3);
 
     for (size_t i = 0; i < AMOUNT; ++i)
     {
