@@ -82,13 +82,11 @@ void Drone::setPB(const DirectionalVector& directional_vector)
 
 void Drone::updateVelocity(const Drone& currentGB)
 {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-
     // Generate two random numbers between 0 and 1
     const double randomNum1 = static_cast<double>(std::rand()) / RAND_MAX;
     const double randomNum2 = static_cast<double>(std::rand()) / RAND_MAX;
 
-    velocity = 0.25 * velocity +
+    velocity = 0.25 *  velocity +
             randomNum1 * (PB - location) +
             randomNum2 * (currentGB.location - location);
 }
@@ -99,7 +97,6 @@ void Drone::move(const Drone& currentGB)
      * Not sure what is the correct order of these lines, but it doesn't seem to matter
      */
     location = location + velocity;
-    this->updateVelocity(currentGB);
 }
 
 void Drone::updatePB(const DirectionalVector& target)
@@ -109,7 +106,7 @@ void Drone::updatePB(const DirectionalVector& target)
 
 std::ostream& operator<<(std::ostream& os, const Drone& d)
 {
-    os << std::fixed << std::setprecision(2); // Set fixed-point format with 2 decimal places
+    os << std::fixed <<std::setprecision(5); // Set fixed-point format with 2 decimal places
     os << "Drone " << d.instanceID
        << " at " << d.location
        << " with speed " << d.velocity

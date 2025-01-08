@@ -1,6 +1,7 @@
 #include "Simulation.h"
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 Simulation::Simulation(const Config& config, const Init& init) :
 target(config.target), AMOUNT(init.dronesAmount), iterations(config.iterations),globalBestIndex(0), forest()
@@ -12,6 +13,7 @@ target(config.target), AMOUNT(init.dronesAmount), iterations(config.iterations),
         updatePersonalBest(i);
     }
     updateGlobalBest();
+    std::srand(static_cast<unsigned int>(time(nullptr)));
 }
 
 Simulation::~Simulation()
@@ -67,8 +69,8 @@ const DirectionalVector& Simulation::getTarget() const
 
 void Simulation::run()
 {
-    std::cout << "Initial state: " << std::endl;
-    printState();
+    // std::cout << "Initial state: " << std::endl;
+    // printState();
     for (unsigned int step = 0; step < iterations; ++step)
     {
         for (size_t i = 0; i < AMOUNT; ++i)
@@ -85,22 +87,28 @@ void Simulation::run()
                 ++forest[newIndex.x][newIndex.y];
             }
 
-            updatePersonalBest(i); // Update personal best
-            updateGlobalBest();  // Update global best for each drone
+            updatePersonalBest(i);
 
             if (drones[i].isOnTarget(target))
             {
-                std::cout << "Step " << step + 1 << std::endl;
-                printState();
-                std::cout << "Drone " << drones[i].getID() << " reached the target!" << std::endl;
+                // std::cout << "Step " << step + 1 << std::endl;
+                // printState();
+                // std::cout << "Drone " << drones[i].getID() << " reached the target!" << std::endl;
                 return; // End simulation early
             }
         }
-        std::cout << "Step " << step + 1 << std::endl;
-        printState();
+
+        updateGlobalBest();
+
+        for (int i = 0; i < AMOUNT; ++i)
+        {
+            drones[i].updateVelocity(drones[globalBestIndex]);
+        }
+        // std::cout << "Step " << step + 1 << std::endl;
+        // printState();
     }
 
-    std::cout << "Simulation ended: Not all drones reached the target." << std::endl;
+    // std::cout << "Simulation ended: Not all drones reached the target." << std::endl;
 }
 
 // Print the state of the simulation

@@ -21,7 +21,6 @@ Config ConfigParser(const std::string& filePath)
         std::cerr << "Error; invalid input" << std::endl;
         return Config(); // "default" object is treated as an error in the main
     }
-
     return Config(Point(x, y), iterations);
 }
 

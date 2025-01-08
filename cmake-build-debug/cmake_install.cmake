@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/User/Documents/CS Degree/Year 2/CPP/HW/HW3DronesRescue
+# Install script for directory: C:/Users/User/Documents/CS Degree/Year 2/CPP/HWs/HW3DronesRescue
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/User/Documents/CS Degree/Year 2/CPP/HW/HW3DronesRescue/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/User/Documents/CS Degree/Year 2/CPP/HWs/HW3DronesRescue/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
