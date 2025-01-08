@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <iomanip>
 
 Simulation::Simulation(const Config& config, const Init& init) :
 target(config.target), AMOUNT(init.dronesAmount), iterations(config.iterations),globalBestIndex(0), forest()
@@ -147,19 +148,23 @@ void Simulation::printState() const
 void Simulation::saveState(const std::string& outputFile) const
 {
     std::ofstream file(outputFile);
-    if (not file.is_open())
+    if (!file.is_open())
     {
-        std::cerr << "Error; invalid input" << outputFile << std::endl;
+        std::cerr << "Error: Could not open file " << outputFile << std::endl;
         return;
     }
+
     file << iterations << std::endl;
+
+    file << std::defaultfloat << std::setprecision(3);
+
     for (size_t i = 0; i < AMOUNT; ++i)
     {
         file << drones[i].getLocation() << std::endl;
     }
+
     file.close();
 }
-
 
 GridIndex Simulation::getGridIndex(const DirectionalVector& position)
 {
