@@ -99,11 +99,6 @@ void Drone::move(const Drone& currentGB)
     location = location + velocity;
 }
 
-void Drone::updatePB(const DirectionalVector& target)
-{
-    PB = target;
-}
-
 std::ostream& operator<<(std::ostream& os, const Drone& d)
 {
     os << std::fixed <<std::setprecision(5); // Set fixed-point format with 2 decimal places

@@ -31,7 +31,6 @@ public:
     bool isOnTarget(const DirectionalVector& target) const;
 
     void updateVelocity(const Drone& currentGB);
-    void updatePB(const DirectionalVector& target);
 
     void move(const Drone& currentGB);
 
